@@ -7,6 +7,7 @@ This repo is for Kotlin to JS (Node.js) compilation testing.
 See `package.json` for convinient scripts. When running use test index (1..4).
 
 ```
+npm install
 npm run-script compile
 npm run-script run 1
 npm run-script time 1
