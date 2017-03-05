@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "compile": "kotlinc-js -verbose -main call -output MyHelloKotlinJs.js -module-kind commonjs MyHelloKotlinJs.kt",
+    "compile": "kotlinc-js -verbose -main call -output MyHelloKotlinJs.js -module-kind commonjs *.kt",
     "run": "node MyHelloKotlinJs.js",
     "time": "time -f \"\\nTime %es, Mem %MKB\" node MyHelloKotlinJs.js"
   },

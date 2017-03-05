@@ -1,56 +1,27 @@
-import kotlin.collections.ArrayList
-@JsModule("bn.js")
-external class BN {
-    constructor(number: Number, base: Number = definedExternally, endian: String = definedExternally)
-    fun iadd(num: BN)
-    fun add(num: BN): BN
-}
+import Impl1.Impl1
+import Impl2.Impl2
+import Impl3.Impl3
+import Impl4.Impl4
 
-val arrLength = 3000000
+external val process: dynamic // Define Node.js 'process' object
 
-fun main(args : Array<String>)
+// Note that command line arguments do not work (yet)
+fun main(args: Array<String>)
 {
-    println("Hello Kotlin!")
-    println(BN(10).toString());
-    val arr = ArrayList<Int>()
-    // val arr = ArrayList<BN>()
-    for (i in 1..arrLength-1) {
-        arr.add(i)
-        // arr.add(BN(i))
+    val argv: Array<String> = process.argv
+    if (argv.size == 3) {
+        when (try { argv[2].toInt() } catch(e: Exception) { 0 }) {
+            1 -> Impl1()
+            2 -> Impl2()
+            3 -> Impl3()
+            4 -> Impl4()
+            else -> {
+                println("No such test")
+            }
+        }
     }
-    println("Array filled")
-    // 3
-    // var sum = arr.reduce { x, y -> x.add(y) }
-    // 4
-    var sum = BN(0)
-    for (a in arr) {
-        sum.iadd(BN(a))
-        // sum = sum.add(BN(a))
+    else {
+        println("Wrong args: ${argv}")
+        println("Usage: ${argv[0]} ${argv[1]} <TestIndex>")
     }
-    println("Sum = ${sum}")
 }
-
-// import kotlin.collections.ArrayList
-// @JsModule("big.js")
-// external val Big: dynamic
-
-// val arrLength = 3000000
-
-// fun main(args : Array<String>)
-// {
-//     println("Hello Kotlin!")
-//     println(Big(10).toString());
-//     val arr = ArrayList<Int>()
-//     for (i in 1..arrLength-1) {
-//         arr.add(i)
-//     }
-//     println("Array filled")
-//     // 1
-//     // var sum = arr.reduce { x, y -> Big(x).plus(y) }
-//     // 2
-//     var sum = Big(0)
-//     for (a in arr) {
-//         sum = sum.plus(a)
-//     }
-//     println("Sum = ${sum}")
-// }
