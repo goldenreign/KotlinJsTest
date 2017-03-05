@@ -1,0 +1,17 @@
+{
+  "name": "kotlinjstest",
+  "version": "1.0.0",
+  "description": "Kotlin JS test",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "compile": "kotlinc-js -verbose -main call -output MyHelloKotlinJs.js -module-kind commonjs MyHelloKotlinJs.kt",
+    "run": "node MyHelloKotlinJs.js",
+    "time": "time -f \"\\nTime %es, Mem %MKB\" node MyHelloKotlinJs.js"
+  },
+  "dependencies": {
+    "big.js": "^3.1.3",
+    "bn.js": "^4.11.6",
+    "kotlin": "^1.1.0"
+  }
+}
